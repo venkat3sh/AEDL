@@ -16,22 +16,50 @@ class App extends Component {
         super(props);
         this.state = {
             columnDefs: [
-                {headerName: 'Make', field: 'make'},
-                {headerName: 'Model', field: 'model'},
-                {
-                    headerName: 'Price',
-                    field: 'price',
-                    editable: true,
-                    cellRenderer: 'numberFormatter',
-                    cellEditor: 'numericCellEditor',
-                    filter: 'rangeFilter'
-                }
+                {headerName: 'Requester ID', editable: true, field: 'rqstr_id'},
+                {headerName: 'DB Description', editable: true, field: 'db_type_desc'},
+                {headerName: 'Source Name',field: 'src_sys_nm',editable: true},
+                {headerName: 'Catalog',field: 'ctlg_nm',editable: true},
+                {headerName: 'Schema',field: 'schma_nm',editable: true},
+                {headerName: 'Source Table',field: 'src_tbl_nm',editable: true},
+                {headerName: 'Column List Text',field: 'src_clmn_list_file_txt',editable: true},
+                {headerName: 'Destination Object',field: 'destn_s3_obj_key',editable: true},
+                {headerName: 'Destination S3 Bucket',field: 'destn_s3_bkt_nm',editable: true},
+                {headerName: 'Destination Type Desc',field: 'destn_type_desc',editable: true},
             ],
-            rowData:  [{make: 'Toyota', model:'sedan', price: '100000'},{
-                make:'ford', model:'hackback', price: '80000'
-            },
-            {
-                make:'tata', model:'hackback', price: '90000'
+            rowData:  [{
+                rqstr_id: 'AG59563', 
+                db_type_desc:'Hive', 
+                src_sys_nm: 'mbr',
+                ctlg_nm: 'AG59563', 
+                schma_nm:'Schema3', 
+                src_tbl_nm: 'Table 1',
+                src_clmn_list_file_txt: 'NA', 
+                destn_s3_obj_key:'NA', 
+                destn_s3_bkt_nm: 'NA',
+                destn_type_desc: 'S3'
+            }, {
+                rqstr_id: 'AG59563', 
+                db_type_desc:'Hive', 
+                src_sys_nm: 'prod',
+                ctlg_nm: 'TeradataDBC', 
+                schma_nm:'Schema2', 
+                src_tbl_nm: 'Table 2',
+                src_clmn_list_file_txt: 'NA', 
+                destn_s3_obj_key:'NA', 
+                destn_s3_bkt_nm: 'NA',
+                destn_type_desc: 'hdfs'
+            }, {
+                rqstr_id: 'AG59563', 
+                db_type_desc:'Teradata', 
+                src_sys_nm: 'clm',
+                ctlg_nm: 'Hive', 
+                schma_nm:'Schema1', 
+                src_tbl_nm: 'Table 3',
+                src_clmn_list_file_txt: 'NA', 
+                destn_s3_obj_key:'NA', 
+                destn_s3_bkt_nm: 'NA',
+                destn_type_desc: 'S3'
             }],
             frameworkComponents: {
                 'numberFormatter': NumberFormatter,
@@ -52,7 +80,7 @@ class App extends Component {
         return (
             <div
                 className="ag-theme-balham"
-                style={{height: '200px', width: '600px'}}
+                style={{height: '400px', width: '100%'}}
             >
                 <AddRowModal handleStateUpdate={this.handleStateUpdate}></AddRowModal>
                 <AgGridReact
