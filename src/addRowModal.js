@@ -65,8 +65,8 @@ export class AddRowModal extends Component{
         {this.state.show && (
         <Modal show={this.state.show}>
             <Modal.Header closeButton>
-            <Modal.Title>Vulcan Metadata</Modal.Title>
-            </Modal.Header>
+                <Modal.Title>Vulcan Metadata</Modal.Title>            
+            </Modal.Header>            
             <Modal.Body>
                 <Form>
 
@@ -85,19 +85,28 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicSrcSys">
-                        <Form.Label  column sm="4">Source System</Form.Label>
+                        <Form.Label column sm="4">Source System</Form.Label>
                         <Column sm="10">
-                        <Form.Control name="src_sys_nm" type="text" placeholder="Source System" 
-                        onChange={e => this.setState({ src_sys_nm: e.target.value })}/>
+                            <Form.Control name="src_sys_nm" placeholder="Source System"  as="select" onChange={e => this.setState({ src_sys_nm: e.target.value })}>
+                                <option>Select</option>
+                                <option>mbr</option>
+                                <option>clm</option>
+                                <option>prod</option>
+                                <option>prov</option>
+                                <option>coa</option>
+                            </Form.Control>
                         </Column>
-                    </Form.Group>
+                    </Form.Group> 
                     <Form.Group as={Row} controlId="formBasicCatlg">
-                        <Form.Label  column sm="4">Catalog Name</Form.Label>
+                        <Form.Label column sm="4">Catalog Name</Form.Label>
                         <Column sm="10">
-                        <Form.Control name="ctlg_nm" type="text" placeholder="Catalog Name" 
-                        onChange={e => this.setState({ ctlg_nm: e.target.value })}/>
+                            <Form.Control name="ctlg_nm" placeholder="Source System"  as="select" onChange={e => this.setState({ ctlg_nm: e.target.value })}>
+                                <option>Select</option>
+                                <option>Teradata</option>
+                                <option>Hive</option>                            
+                            </Form.Control>
                         </Column>
-                    </Form.Group>
+                    </Form.Group>                                       
                     <Form.Group as={Row} controlId="formBasicSchema">
                         <Form.Label  column sm="4">Schema Name</Form.Label>
                         <Column sm="10">
@@ -153,12 +162,12 @@ export class AddRowModal extends Component{
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-                Close
-            </Button>
-            <Button variant="primary" onClick={this.saveChanges}>
-                Save Changes
-            </Button>
+                <Button variant="secondary" onClick={this.handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={this.saveChanges}>
+                    Submit Record(s)
+                </Button>
             </Modal.Footer>
         </Modal>)}
     </div>)

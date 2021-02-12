@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import './App.css';
 
 import { AgGridReact } from 'ag-grid-react';
+import { Modal, Button, Form, FormGroup } from 'react-bootstrap'; 
 import 'ag-grid/dist/styles/ag-grid.css';
 import 'ag-grid/dist/styles/ag-theme-balham.css';
 
@@ -90,7 +91,14 @@ class App extends Component {
                     columnDefs={this.state.columnDefs}
                     frameworkComponents={this.state.frameworkComponents}
                     rowData={this.state.rowData}>
-                </AgGridReact>
+                </AgGridReact>    
+                <div class="modal-footer">
+                    <p class="mr-auto">
+                        This gris is editable and we can edit here before generating csv. We can add metadata through Add Metada form and also we can add multiple records at once by providing comma seperated Source Table names.
+                    </p>
+                    {/* <button type="button" class="btn btn-primary mr-auto">Save changes</button> */}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Generate CSV</button>
+                </div>                            
             </div>
         );
     }
