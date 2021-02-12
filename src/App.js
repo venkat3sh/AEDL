@@ -94,7 +94,7 @@ class App extends Component {
                 </AgGridReact>    
                 <div class="modal-footer">
                     <p class="mr-auto">
-                        This gris is editable and we can edit here before generating csv. We can add metadata through Add Metada form and also we can add multiple records at once by providing comma seperated Source Table names.
+                        This grid is editable and we can edit here before generating csv. We can add metadata through Add Metada form and also we can add multiple records at once by providing comma seperated Source Table names.
                     </p>
                     {/* <button type="button" class="btn btn-primary mr-auto">Save changes</button> */}
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Generate CSV</button>
