@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Modal, Button, Form, FormGroup } from 'react-bootstrap'; 
 import { Row, Column } from 'react-foundation';
+import InputGroup from 'react-bootstrap/InputGroup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import 'font-awesome/css/font-awesome.css';
 
 export class AddRowModal extends Component{
     state={
@@ -71,22 +75,39 @@ export class AddRowModal extends Component{
                 <Form>
 
                     <Form.Group as={Row} controlId="formBasicReq">
-                        <Form.Label column sm="4">Requester ID</Form.Label>
-                        <Column sm="10">
-                        <Form.Control name="rqstr_id" type="text" placeholder="Requester ID" 
-                        onChange={e => this.setState({ rqstr_id: e.target.value })}/>
+                        <Form.Label column sm="4">Requester ID</Form.Label>                        
+                        <Column sm="10">                        
+                        <InputGroup hasValidation>                                                        
+                            <Form.Control name="rqstr_id" type="text" aria-describedby="inputGroupPrepend" placeholder="Requester ID" 
+                            onChange={e => this.setState({ rqstr_id: e.target.value })}/>  
+                            <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDBDesc">
                         <Form.Label  column sm="4">DB Description</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="db_type_desc" type="text" placeholder="DB Description" 
                         onChange={e => this.setState({ db_type_desc: e.target.value })}/>
-                        </Column>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>                        
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicSrcSys">
                         <Form.Label column sm="4">Source System</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                             <Form.Control name="src_sys_nm" placeholder="Source System"  as="select" onChange={e => this.setState({ src_sys_nm: e.target.value })}>
                                 <option>Select</option>
                                 <option>mbr</option>
@@ -95,58 +116,121 @@ export class AddRowModal extends Component{
                                 <option>prov</option>
                                 <option>coa</option>
                             </Form.Control>
+                            <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group> 
                     <Form.Group as={Row} controlId="formBasicCatlg">
                         <Form.Label column sm="4">Catalog Name</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                             <Form.Control name="ctlg_nm" placeholder="Source System"  as="select" onChange={e => this.setState({ ctlg_nm: e.target.value })}>
                                 <option>Select</option>
                                 <option>Teradata</option>
                                 <option>Hive</option>                            
                             </Form.Control>
+                            <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>                                       
                     <Form.Group as={Row} controlId="formBasicSchema">
                         <Form.Label  column sm="4">Schema Name</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="schma_nm" type="text" placeholder="Schema Name" 
                         onChange={e => this.setState({ schma_nm: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicSourceTable">
                         <Form.Label  column sm="4">Source Table</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="src_tbl_nm" type="text" placeholder="Source Table" 
                         onChange={e => this.setState({ src_tbl_nm: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicColList">
                         <Form.Label  column sm="4">Column List Text</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="src_clmn_list_file_txt" type="text" placeholder="Column List Text" 
                         onChange={e => this.setState({ src_clmn_list_file_txt: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestObj">
                         <Form.Label  column sm="4">Destination Object</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="destn_s3_obj_key" type="text" placeholder="Destination Object" 
                         onChange={e => this.setState({ destn_s3_obj_key: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestBucket">
                         <Form.Label  column sm="4">Destination Bucket</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="destn_s3_bkt_nm" type="text" placeholder="Destination Bucket" 
                         onChange={e => this.setState({ destn_s3_bkt_nm: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestDesc">
                         <Form.Label  column sm="4">Destination Type Desc</Form.Label>
                         <Column sm="10">
+                        <InputGroup hasValidation>
                         <Form.Control name="destn_type_desc" type="text" placeholder="Destination Type Desc" 
                         onChange={e => this.setState({ destn_type_desc: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
                         </Column>
                     </Form.Group>
                     {/* <Form.Group controlId="formBasicModel">
