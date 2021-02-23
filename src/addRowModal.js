@@ -99,8 +99,8 @@ export class AddRowModal extends Component{
                 <Form>
 
                     <Form.Group as={Row} controlId="formBasicReq">
-                        <Form.Label column sm="4">Requester ID</Form.Label>                        
-                        <Column sm="10">                        
+                        <Form.Label column sm="6">Requester ID</Form.Label>                        
+                        <Column sm="6">                        
                         <InputGroup hasValidation>                                                        
                             <Form.Control name="rqstr_id" type="text" aria-describedby="inputGroupPrepend" placeholder="Requester ID" 
                             onChange={e => this.setState({ rqstr_id: e.target.value })}/>  
@@ -114,8 +114,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDBDesc">
-                        <Form.Label  column sm="4">DB Description</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">DB Description</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="db_type_desc" type="text" placeholder="DB Description" 
                         onChange={e => this.setState({ db_type_desc: e.target.value })}/>
@@ -128,8 +128,8 @@ export class AddRowModal extends Component{
                         </Column>                        
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicSrcSys">
-                        <Form.Label column sm="4">Source System</Form.Label>
-                        <Column sm="10">
+                        <Form.Label column sm="6">Source System</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                             <Form.Control name="src_sys_nm" placeholder="Source System"  as="select" onChange={e => this.setState({ src_sys_nm: e.target.value })}>
                                 <option>Select</option>
@@ -149,8 +149,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group> 
                     <Form.Group as={Row} controlId="formBasicCatlg">
-                        <Form.Label column sm="4">Catalog Name</Form.Label>
-                        <Column sm="10">
+                        <Form.Label column sm="6">Catalog Name</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                             <Form.Control name="ctlg_nm" placeholder="Source System"  as="select" onChange={e => this.setState({ ctlg_nm: e.target.value })}>
                                 <option>Select</option>
@@ -167,8 +167,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>                                       
                     <Form.Group as={Row} controlId="formBasicSchema">
-                        <Form.Label  column sm="4">Schema Name</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Schema Name</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="schma_nm" type="text" placeholder="Schema Name" 
                         onChange={e => this.setState({ schma_nm: e.target.value })}/>
@@ -182,8 +182,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicSourceTable">
-                        <Form.Label  column sm="4">Source Table</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Source Table</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="src_tbl_nm" type="text" placeholder="Source Table" 
                         onChange={e => this.setState({ src_tbl_nm: e.target.value })}/>
@@ -196,8 +196,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicColList">
-                        <Form.Label  column sm="4">Delta Table Name</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Delta Table Name</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="delta_tbl_nm" type="text" placeholder="Delta Table Name" 
                         onChange={e => this.setState({ delta_tbl_nm: e.target.value })}/>
@@ -210,8 +210,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicColList">
-                        <Form.Label  column sm="4">HDFS Delta Table Path Text</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">HDFS Delta Table Path Text</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="hdfs_delta_tbl_path_txt" type="text" placeholder="HDFS Delta Table Path Text" 
                         onChange={e => this.setState({ hdfs_delta_tbl_path_txt: e.target.value })}/>
@@ -224,8 +224,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicColList">
-                        <Form.Label  column sm="4">HDFS Delete Table Path Text</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">HDFS Delete Table Path Text</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="hdfs_del_tbl_path_txt" type="text" placeholder="HDFS Delete Table Path Text" 
                         onChange={e => this.setState({ hdfs_del_tbl_path_txt: e.target.value })}/>
@@ -238,8 +238,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestObj">
-                        <Form.Label  column sm="4">Destination S3 Object</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Destination S3 Object</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="destn_s3_obj_key" type="text" placeholder="Destination S3 Object" 
                         onChange={e => this.setState({ destn_s3_obj_key: e.target.value })}/>
@@ -252,8 +252,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestBucket">
-                        <Form.Label  column sm="4">Destination S3 Bucket</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Destination S3 Bucket</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="destn_s3_bkt_nm" type="text" placeholder="Destination Bucket" 
                         onChange={e => this.setState({ destn_s3_bkt_nm: e.target.value })}/>
@@ -266,8 +266,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestDesc">
-                        <Form.Label  column sm="4">Destination Type Desc</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Destination Type Desc</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="destn_type_desc" type="text" placeholder="Destination Type Desc" 
                         onChange={e => this.setState({ destn_type_desc: e.target.value })}/>
@@ -280,8 +280,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestDesc">
-                        <Form.Label  column sm="4">Target Table Refresh Type</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Target Table Refresh Type</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="trgt_tbl_rfrsh_type" type="text" placeholder="Target Table Refresh Type" 
                         onChange={e => this.setState({ trgt_tbl_rfrsh_type: e.target.value })}/>
@@ -294,8 +294,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestDesc">
-                        <Form.Label  column sm="4">Active Flag</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Active Flag</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="actv_flag" type="text" placeholder="Active Flag" 
                         onChange={e => this.setState({ actv_flag: e.target.value })}/>
@@ -308,8 +308,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestDesc">
-                        <Form.Label  column sm="4">Created Time</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Created Time</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="creat_dtm" type="text" placeholder="Created Time" 
                         onChange={e => this.setState({ creat_dtm: e.target.value })}/>
@@ -322,8 +322,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestDesc">
-                        <Form.Label  column sm="4">Last Updated Time</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Last Updated Time</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="last_updt_dtm" type="text" placeholder="Last Updated Time" 
                         onChange={e => this.setState({ last_updt_dtm: e.target.value })}/>
@@ -336,8 +336,8 @@ export class AddRowModal extends Component{
                         </Column>
                     </Form.Group>                    
                     <Form.Group as={Row} controlId="formBasicDestDesc">
-                        <Form.Label  column sm="4">Ownership Team</Form.Label>
-                        <Column sm="10">
+                        <Form.Label  column sm="6">Ownership Team</Form.Label>
+                        <Column sm="6">
                         <InputGroup hasValidation>
                         <Form.Control name="ownrshp_team" type="text" placeholder="Ownership Team" 
                         onChange={e => this.setState({ ownrshp_team: e.target.value })}/>
