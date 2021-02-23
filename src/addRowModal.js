@@ -10,14 +10,26 @@ export class AddRowModal extends Component{
     state={
         rqstr_id: 'NA', 
         db_type_desc:'Hive', 
-        src_sys_nm: 'Prod',
+        src_sys_nm: 'NA',
         ctlg_nm: 'NA', 
         schma_nm:'NA', 
         src_tbl_nm: 'NA',
         src_clmn_list_file_txt: 'NA', 
         destn_s3_obj_key:'NA', 
         destn_s3_bkt_nm: 'NA',
-        destn_type_desc: 'S3',
+        destn_type_desc: 'NA',
+        delta_tbl_nm: 'NA',
+        delta_tbl_clmn_lst_txt: 'NA',
+        del_tbl_nm: 'NA',
+        del_tbl_clmn_lst_txt: 'NA',
+        hdfs_delta_tbl_path_txt: 'NA',
+        hdfs_del_tbl_path_txt: 'NA',
+        tpt_instances_cnt:'NA',
+        trgt_tbl_rfrsh_type: 'NA',
+        actv_flag: 'NA',
+        creat_dtm: 'NA',
+        last_updt_dtm: 'NA',
+        ownrshp_team: 'NA',
         show: false,
         finalResult: []
     }
@@ -40,6 +52,18 @@ export class AddRowModal extends Component{
                     destn_s3_obj_key:this.state.destn_s3_obj_key, 
                     destn_s3_bkt_nm: this.state.destn_s3_bkt_nm,
                     destn_type_desc: this.state.destn_type_desc,
+                    delta_tbl_nm: this.delta_tbl_nm,
+                    delta_tbl_clmn_lst_txt: this.delta_tbl_clmn_lst_txt,
+                    del_tbl_nm: this.del_tbl_nm,
+                    del_tbl_clmn_lst_txt: this.del_tbl_clmn_lst_txt,
+                    hdfs_delta_tbl_path_txt: this.hdfs_delta_tbl_path_txt,
+                    hdfs_del_tbl_path_txt: this.hdfs_del_tbl_path_txt,
+                    tpt_instances_cnt: this.tpt_instances_cnt,
+                    trgt_tbl_rfrsh_type: this.trgt_tbl_rfrsh_type,
+                    actv_flag: this.actv_flag,
+                    creat_dtm: this.creat_dtm,
+                    last_updt_dtm: this.last_updt_dtm,
+                    ownrshp_team: this.ownrshp_team
                 }
             });
             this.props.handleStateUpdate(finalResult);
@@ -82,7 +106,7 @@ export class AddRowModal extends Component{
                             onChange={e => this.setState({ rqstr_id: e.target.value })}/>  
                             <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    <div title="The entry creator"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                     {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
@@ -97,8 +121,7 @@ export class AddRowModal extends Component{
                         onChange={e => this.setState({ db_type_desc: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
-                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                    <div title="The type of the database (Hive,Teradata)"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
                         </InputGroup>
@@ -118,7 +141,7 @@ export class AddRowModal extends Component{
                             </Form.Control>
                             <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    <div title="The name of the source system (cda , cii ,edw)"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                     {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
@@ -136,7 +159,7 @@ export class AddRowModal extends Component{
                             </Form.Control>
                             <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    <div title="The name of the metastore"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                     {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
@@ -151,7 +174,7 @@ export class AddRowModal extends Component{
                         onChange={e => this.setState({ schma_nm: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                    <div title="The name of the database schema in which source table resides"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                     {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
@@ -166,53 +189,77 @@ export class AddRowModal extends Component{
                         onChange={e => this.setState({ src_tbl_nm: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
-                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                    <div title="The source table name"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
                         </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicColList">
-                        <Form.Label  column sm="4">Column List Text</Form.Label>
+                        <Form.Label  column sm="4">Delta Table Name</Form.Label>
                         <Column sm="10">
                         <InputGroup hasValidation>
-                        <Form.Control name="src_clmn_list_file_txt" type="text" placeholder="Column List Text" 
-                        onChange={e => this.setState({ src_clmn_list_file_txt: e.target.value })}/>
+                        <Form.Control name="delta_tbl_nm" type="text" placeholder="Delta Table Name" 
+                        onChange={e => this.setState({ delta_tbl_nm: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
-                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                    <div title="The name of the table containing the incremental records (can be the same as the source table)"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="formBasicColList">
+                        <Form.Label  column sm="4">HDFS Delta Table Path Text</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="hdfs_delta_tbl_path_txt" type="text" placeholder="HDFS Delta Table Path Text" 
+                        onChange={e => this.setState({ hdfs_delta_tbl_path_txt: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The HDFS path of delta table in Hive"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="formBasicColList">
+                        <Form.Label  column sm="4">HDFS Delete Table Path Text</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="hdfs_del_tbl_path_txt" type="text" placeholder="HDFS Delete Table Path Text" 
+                        onChange={e => this.setState({ hdfs_del_tbl_path_txt: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The HDFS path of delete table in Hive"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
                         </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestObj">
-                        <Form.Label  column sm="4">Destination Object</Form.Label>
+                        <Form.Label  column sm="4">Destination S3 Object</Form.Label>
                         <Column sm="10">
                         <InputGroup hasValidation>
-                        <Form.Control name="destn_s3_obj_key" type="text" placeholder="Destination Object" 
+                        <Form.Control name="destn_s3_obj_key" type="text" placeholder="Destination S3 Object" 
                         onChange={e => this.setState({ destn_s3_obj_key: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
-                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                    <div title="The S3 object key"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
                         </InputGroup>
                         </Column>
                     </Form.Group>
                     <Form.Group as={Row} controlId="formBasicDestBucket">
-                        <Form.Label  column sm="4">Destination Bucket</Form.Label>
+                        <Form.Label  column sm="4">Destination S3 Bucket</Form.Label>
                         <Column sm="10">
                         <InputGroup hasValidation>
                         <Form.Control name="destn_s3_bkt_nm" type="text" placeholder="Destination Bucket" 
                         onChange={e => this.setState({ destn_s3_bkt_nm: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
-                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                    <div title="The S3 bucket name"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
                         </InputGroup>
@@ -226,23 +273,82 @@ export class AddRowModal extends Component{
                         onChange={e => this.setState({ destn_type_desc: e.target.value })}/>
                         <InputGroup.Prepend>
                                 <InputGroup.Text>
-                                    <div title="Help Text goes here"><FontAwesomeIcon icon={faInfoCircle} /></div>
-                                    {/* <i class="fas fa-info-circle" title="Some text goes here"></i> */}
+                                    <div title="The destination type"><FontAwesomeIcon icon={faInfoCircle} /></div>
                                 </InputGroup.Text>
                             </InputGroup.Prepend>                          
                         </InputGroup>
                         </Column>
                     </Form.Group>
-                    {/* <Form.Group controlId="formBasicModel">
-                        <Form.Label>Model</Form.Label>
-                        <Form.Control name="model" type="text" placeholder="model" 
-                        onChange={e => this.setState({ model: e.target.value })} />
+                    <Form.Group as={Row} controlId="formBasicDestDesc">
+                        <Form.Label  column sm="4">Target Table Refresh Type</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="trgt_tbl_rfrsh_type" type="text" placeholder="Target Table Refresh Type" 
+                        onChange={e => this.setState({ trgt_tbl_rfrsh_type: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The mode of update of the target table (full refresh , delete etc)"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
                     </Form.Group>
-                    <Form.Group controlId="formBasicPrice">
-                        <Form.Label>Price</Form.Label>
-                        <Form.Control name="price" type="text" placeholder="price" 
-                        onChange={e => this.setState({ price: e.target.value })} />
-                    </Form.Group> */}
+                    <Form.Group as={Row} controlId="formBasicDestDesc">
+                        <Form.Label  column sm="4">Active Flag</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="actv_flag" type="text" placeholder="Active Flag" 
+                        onChange={e => this.setState({ actv_flag: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The flag indicating whether the table is still an active candidate for export"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="formBasicDestDesc">
+                        <Form.Label  column sm="4">Created Time</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="creat_dtm" type="text" placeholder="Created Time" 
+                        onChange={e => this.setState({ creat_dtm: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The entry creation time"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
+                    </Form.Group>
+                    <Form.Group as={Row} controlId="formBasicDestDesc">
+                        <Form.Label  column sm="4">Last Updated Time</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="last_updt_dtm" type="text" placeholder="Last Updated Time" 
+                        onChange={e => this.setState({ last_updt_dtm: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The entry last updated time"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
+                    </Form.Group>                    
+                    <Form.Group as={Row} controlId="formBasicDestDesc">
+                        <Form.Label  column sm="4">Ownership Team</Form.Label>
+                        <Column sm="10">
+                        <InputGroup hasValidation>
+                        <Form.Control name="ownrshp_team" type="text" placeholder="Ownership Team" 
+                        onChange={e => this.setState({ ownrshp_team: e.target.value })}/>
+                        <InputGroup.Prepend>
+                                <InputGroup.Text>
+                                    <div title="The team owning the table"><FontAwesomeIcon icon={faInfoCircle} /></div>
+                                </InputGroup.Text>
+                            </InputGroup.Prepend>                          
+                        </InputGroup>
+                        </Column>
+                    </Form.Group>                    
                 </Form>
             </Modal.Body>
             <Modal.Footer>
